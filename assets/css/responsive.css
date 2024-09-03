@@ -1,0 +1,333 @@
+/* 1400, 1199, 991, 767, 575, 480, 360, 320 */
+/* CSS Index
+-----------------------------------
+1.default css
+2.
+-----------------------------------
+*/
+/* min-width 1430 */
+@media (min-width: 1430px) {
+}
+/* max-width 1399 */
+@media (max-width: 1399.98px) {
+    /* header section start */
+    .main-menu ul li {
+        margin-right: 16px;
+    }
+    /* header section end */
+}
+/* max-width 1199 */
+@media (max-width: 1199.98px) { 
+    /* container padding fix */
+    .container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl{
+        padding-right: 24px;
+        padding-left: 24px;
+    }
+    .banner-area.content-version::before {
+        width: calc(100% - 48px);
+        margin-left: 24px;
+      }
+    /* container padding fix */
+    /* header section start */
+    .dialogica-btn {
+        padding: 12px 35px;
+    }
+    .main-logo img {
+        max-width: 110px;
+    }
+    /* header section end */
+
+    /* banner section start */
+    .banner-img-wrapper {
+        width: 100%;
+        max-width: 450px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .banner-area .banner-content-wrapper {
+        margin-top: 35px;
+    }
+    .banner-area .col {
+        flex-basis: 100%;
+    }
+    /* banner section end */
+
+    /* dialogica solutions section start */
+    .dialogica-solutions-card-wrapper .dialogica-solutions-card-info {
+        min-height: 280px;
+    }
+    .dialogica-solutions-card-wrapper .dialogica-solutions-card-info:nth-child(2){
+        width: calc(50% - 10px);
+    }
+    /* dialogica solutions section end */
+    /* our solutions section start */
+    .inner-solutions-area .row {
+        --bs-gutter-x: 24px;
+    }
+    /* our solutions section start  */
+    /* footer section start */
+    .social-link {
+        width: 40px;
+        height: 40px;
+    }
+    .social-link svg {
+        height: 16px;
+        width: 16px;
+    }
+    /* footer section end */
+    /* our engagement models section start */
+    .engagement-models-card-content {
+        max-width: 450px;
+    }
+    .engagement-img-wrapper {
+        width: calc(50% - 65px);
+    }
+    /* our engagement models section end */
+}
+/* max-width 1399 - min-width 992*/
+@media (max-width: 1199.98px) and (min-width: 992px) {
+}
+/* max-width 991 */
+@media (max-width: 991.98px) {
+    /* all padding */
+    .our-engagement-models-area {
+        padding: 48px 0px;
+    }
+    /* all padding */
+    
+    /* heading  style*/
+    .main-title ,
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 36px;
+    }
+
+    h3 {
+        font-size: 28px;
+    }
+
+    h4 {
+        font-size: 24px;
+    }
+
+    h5 {
+        font-size: 20px;
+    }
+    h6{
+        font-size: 18px;
+    }
+    .section-title-wrapper {
+        margin-bottom: 25px;
+    }
+    .section-title-wrapper h2 {
+        margin-bottom: 12px;
+    }
+    /* banner section start */
+
+    .banner-area ,
+    .banner-area.content-version {
+        min-height: 350px;
+        padding: 100px 0 40px;
+    }
+    .banner-area{
+        min-height: 500px;
+    }
+    .contact-area.contact-page{
+        padding: 150px 0 50px;
+    }
+    /* banner section end */
+
+    /* technologies section start */
+    
+    .technologies-groups-wrapper.version-2 .technologies-content ,
+    .technologies-content {
+        max-width: 100%;
+    }
+    .our-technologies-inner-area .technologies-groups-wrapper {
+        margin-bottom: 30px;
+    }
+    /* technologies section end */
+    /* dialogica solutions section start */
+    .dialogica-solutions-card-wrapper .dialogica-solutions-card-info {
+        min-height: auto;
+    }
+    .about-card-wrapper .card-info ,
+    .dialogica-solutions-card-wrapper .dialogica-solutions-card-info,
+    .dialogica-solutions-card-wrapper .dialogica-solutions-card-info:nth-child(2){
+        width: 100%;
+    }
+    /* dialogica solutions section end */
+    /* our solutions section start */
+    .inner-solutions-area .card-info .learn-btn {
+        margin-top: 30px;
+    }
+    .card-content h5 {
+        font-size: 24px;
+        margin-bottom: 12px;
+    }
+    .card-icon {
+        margin-bottom: 16px;
+    }
+    .inner-solutions-area h4 {
+        margin-bottom: 20px;
+    }
+    .our-solutions-area .inner-solutions-area {
+        margin-bottom: 25px;
+    }
+    .card-icon {
+        height: 50px;
+        width: 50px;
+    }
+    .inner-solutions-area .card-info {
+        min-height: auto;
+    }
+    /* our solutions section start  */
+    /* our engagement models section start */
+    .engagement-models-card-content {
+        max-width: 100%;
+    }
+    .engagement-models-card-wrapper .card-info  .flex-row-reverse .engagement-img-wrapper ,
+    .engagement-img-wrapper {
+        width: 100%;
+        position: relative;
+        height: 350px;
+        left: 0;
+        right: 0;
+        margin-top: 35px;
+        top: 0;
+    }
+    .engagement-models-card-wrapper .card-info {
+        margin-bottom: 35px;
+    }
+    .engagement-models-card-wrapper.version-2 .card-info {
+        width: 100%;
+    }
+    /* our engagement models section end */    
+    /* about card section start */
+    .about-card-wrapper .card-info:first-child {
+        gap: 15px;
+    }
+    /* about card section end */
+    /* contact section start */
+    .contact-form-wrapper .dialogica-btn {
+        margin-top: 20px;
+    }
+    /* contact section end */
+    /* footer section start */
+    .footer-area {
+        padding: 15px 0;
+    }
+    /* footer section end */
+}
+/* max-width 767 */
+@media (max-width: 767.98px) { 
+    
+}
+/* max-width 575 */
+@media (max-width: 575.98px) {
+
+    /* our engagement models section start */
+    .engagement-models-inner-title {
+        font-size: 20px;
+    }
+    /* our engagement models section end */   
+    /* about card section start */
+    .about-card-wrapper  .card-info.text-center p {
+        font-size: 24px;
+    }
+    /* about card section end */
+    
+  
+}
+/* max-width 479 */
+@media (max-width: 479.98px) {
+    /* heading  style*/
+     .main-title ,
+     h1 {
+         font-size: 36px;
+     }
+     h2 {
+         font-size: 30px;
+     }
+ 
+     h3 {
+         font-size: 24px;
+     }
+ 
+     h4 {
+         font-size: 20px;
+     }
+    /* technologies section start */
+     .technologies-info {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    /* technologies section end */
+    /* dialogica solutions section start */
+    .solutions-img-shape {
+        width: 100%;
+    }
+    .card-info {
+        padding: 18px;
+    }
+    /* dialogica solutions section end */
+    /* about card section start  */
+    .about-card-img {
+        height: 70px;
+        width: 70px;
+    }
+    .center-img {
+        height: 80px;
+        width: 80px;
+    }
+    .about-card-wrapper .card-info{
+        padding: 32px;
+        min-height: 400px;
+    }
+    .about-card-img-inner {
+        height: 336px;
+    }
+    .about-card-wrapper  .card-info.text-center p {
+        font-size: 20px;
+    }
+    .about-card-img:nth-child(3) {
+        top: auto;
+        bottom: 85px;
+    }
+    /* about card section end  */
+    /* footer section start */
+    .socials-link-wrapper {
+        gap: 8px;
+    }
+    /* footer section end */
+  
+}
+/* max-width 383 */
+@media (max-width: 383.98px) {
+    /* our engagement models section start */
+    .engagement-models-inner-title {
+        font-size: 16px;
+    }
+    /* our engagement models section end */  
+    /* about card section start  */
+    .about-card-img {
+        height: 60px;
+        width: 60px;
+    }
+    .center-img {
+        height: 70px;
+        width: 70px;
+    }
+    .about-card-wrapper .card-info{
+        padding: 20px;
+        min-height: 350px;
+    }
+    .about-card-img-inner {
+        height: 310px;
+    }
+
+/* about card section end  */
+  
+}
