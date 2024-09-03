@@ -1,84 +1,163 @@
 (function ($) {
-		$(document).ready(function () { 
-				// gsap
-				// gsap.registerPlugin(ScrollTrigger , SplitText);
-	
-				// gsap.utils.toArray('.fade-up').forEach((element) => {
-				// 	gsap.fromTo(element,
-				// 	  { opacity: 0, y: 50 }, 
-				// 	  { 
-				// 		opacity: 1, 
-				// 		y: 0, 
-				// 		duration: 0.5, 
-				// 		ease: "power1.out", 
-				// 		scrollTrigger: {
-				// 		  trigger: element,
-				// 		  start: 'top 75%',
-				// 		  end: 'bottom 75%', 
-				// 		  scrub: false,  
-				// 		}
-				// 	  }
-				// 	);
-				//   });
-				  
-				  
-				  
+	$(document).ready(function () {
 
 
+		// offcanvas
+		let offcanvasElement = $('.offcanvas-header');
+		offcanvasElement.on('show.bs.offcanvas', function () {
+			$('.humbarger-btn').addClass('open');
+			$('.btn-close span:nth-child(1)').css({
+				transform: 'rotate(45deg)',
+				marginBottom: '0'
+			});
+			$('.btn-close span:nth-child(2)').css({
+				transform: 'rotate(-45deg)',
+				marginTop: '-4px'
+			});
+		});
+		offcanvasElement.on('hide.bs.offcanvas', function () {
+			$('.humbarger-btn').removeClass('open');
+			$('.btn-close span:nth-child(1)').css({
+				transform: '',
+				marginBottom: ''
+			});
+			$('.btn-close span:nth-child(2)').css({
+				transform: '',
+				marginTop: ''
+			});
+		});
+
+		// gsap
+		gsap.registerPlugin(ScrollTrigger);
+		// fade up animation
+		gsap.utils.toArray('.fade-up').forEach((element) => {
+			// Read the animation-delay attribute
+			const animationDelay = element.getAttribute('animation-delay');
+			const delay = animationDelay ? parseFloat(animationDelay) : 0;
+
+			gsap.fromTo(element, {
+				opacity: 0,
+				y: 50
+			}, {
+				opacity: 1,
+				y: 0,
+				duration: 0.5,
+				ease: "none",
+				delay: delay, // Apply the delay if present
+				scrollTrigger: {
+					trigger: element,
+					start: 'top bottom',
+					end: 'top center',
+					once: true,
+					toggleActions: 'play none none none',
+				}
+			});
+		});
 
 
-			// card animation 
-		// function getScrollAmount() {
-		// 	let offset= $(".container").offset();
-		// 	let containerLeftOffset = offset.left;
-		// 	console.log(containerLeftOffset);
-		// 	let racesWidth = $(".card-move-info")[0].scrollWidth;
-		// 	let innerWidth=$(window).innerWidth();
-		// 	let scrollAmount =( racesWidth - $(window).innerWidth()) + containerLeftOffset + containerLeftOffset;
+		// card animation
+		function getScrollAmount(element) {
+			let offset = $(".container").offset();
+			let containerLeftOffset = offset ? offset.left : 0;
+		
+			let $element = $(element);
+			if ($element.length === 0) {
+				console.warn(`${element} not found`);
+				return 0;
+			}
+		
+			let racesWidth = $element[0].scrollWidth;
+			let innerWidth = $(window).innerWidth();
+			let scrollAmount = (racesWidth - innerWidth) + (2 * containerLeftOffset);
+		
+			return scrollAmount;
+		}
+		
+		function createGSAPTween(target, scrollAmount) {
+			return gsap.to(target, {
+				x: () => -scrollAmount,
+				duration: 3,
+				ease: "none",
+				paused: true, 
+			});
+		}
+		
+		function createScrollTrigger(triggerElement, targetElement) {
+			let scrollAmount = getScrollAmount(targetElement);
+			let tween = createGSAPTween(targetElement, scrollAmount);
+		
+			ScrollTrigger.create({
+				trigger: triggerElement,
+				start: "top center", 
+				end: () => `+=${scrollAmount}`,
+				pin: true,
+				animation: tween,
+				scrub: 1,
+				invalidateOnRefresh: true,
+				onEnter: () => tween.play(), 
+				onLeave: () => tween.pause(), 
+				onLeaveBack: () => tween.pause(), 
+			});
+		}
+		
+		function initializeScrollTriggers() {
+			if ($(window).width() > 991) { // Check if window width is 991px or greater
+				$(".card-move-wrapper").each(function () {
+					let targetElement = $(this).find(".card-move-info").first(); 
+					createScrollTrigger(this, targetElement);
+				});
+			}
+		}
+		
+		function handleResize() {
+			// Kill existing ScrollTriggers and reinitialize if width is 991px or greater
+			if ($(window).width() >= 991) {
+				ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+				initializeScrollTriggers();
+			} else {
+			}
+		}
+		// Initialize on page load
+		initializeScrollTriggers();
+		
+		// Update ScrollTrigger on window resize
+		$(window).on('resize', handleResize);
+		// card animation
 
-		// 	return scrollAmount;
-		// }
+		// rotate 
+		function aboutCardRotate() {
+			if ($(window).width() > 991) { 
+				gsap.to(".about-card-img-inner", {
+					scrollTrigger: {
+					  trigger: ".about-card-wrapper",
+					  start: "top 50%",
+					  end: "bottom top",
+					  scrub: true,
+					},
+					rotation: 360, 
+					stagger: 0.1,
+					ease: "power1.out",
+					transformOrigin: "center center", 
+					duration: 1
+				  });
+			}
+		}
+		aboutCardRotate();
 
-		// // Create GSAP tween animation
-		// const tween = gsap.to(".card-move-info", {
-		// 	x: () => -getScrollAmount(), 
-		// 	duration: 3,
-		// 	ease: "none",
-		// });
+		  
+		// rotate
 
-		// // Create ScrollTrigger
-		// function updateScrollTrigger() {
-		// 	ScrollTrigger.create({
-		// 		trigger: ".card-move-wrapper",
-		// 		start: "top 30%",
-		// 		end: () => `+=${getScrollAmount()}`, 
-		// 		pin: true,
-		// 		animation: tween,
-		// 		scrub: 1,
-		// 		invalidateOnRefresh: true,
-		// 	});
-		// }
-
-		// // Initialize ScrollTrigger
-		// updateScrollTrigger();
-
-		// // Update ScrollTrigger on window resize
-		// $(window).on('resize', function() {
-		// 	ScrollTrigger.getAll().forEach(trigger => trigger.kill()); 
-		// 	updateScrollTrigger(); 
-		// });		
 
 		// Lenis
 		const lenis = new Lenis()
 
 		lenis.on('scroll', (e) => {
-		console.log(e)
 		})
 
 		lenis.on('scroll', ScrollTrigger.update)
 
-		gsap.ticker.add((time)=>{
-		lenis.raf(time * 1000)
+		gsap.ticker.add((time) => {
+			lenis.raf(time * 1000)
 		})
 
 		gsap.ticker.lagSmoothing(0)
