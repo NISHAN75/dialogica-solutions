@@ -129,23 +129,69 @@
 			if ($(window).width() > 991) { 
 				gsap.to(".about-card-img-inner", {
 					scrollTrigger: {
-					  trigger: ".about-card-wrapper",
-					  start: "top 50%",
-					  end: "bottom top",
-					  scrub: true,
+						trigger: ".about-card-wrapper",
+						start: "top 50%",
+						end: "bottom top",
+						scrub: true,
 					},
-					rotation: 360, 
-					stagger: 0.1,
+					rotation: 360,
 					ease: "power1.out",
-					transformOrigin: "center center", 
+					transformOrigin: "center center",
 					duration: 1
-				  });
+				});
 			}
 		}
 		aboutCardRotate();
+		function reverseCardRotate() {
+			if ($(window).width() > 991) { 
+				gsap.to(".about-card-img", {
+					scrollTrigger: {
+						trigger: ".about-card-wrapper",
+						start: "top 50%",
+						end: "bottom top",
+						scrub: true,
+					},
+					rotation: -360,
+					ease: "power1.out",
+					transformOrigin: "center center",
+					duration: 1
+				});
+			}
+		}
+		reverseCardRotate();
 
 		  
 		// rotate
+
+		// testing
+		function animateTechnologiesIcons() {
+			// technologies icons
+			let icons = $('.technologies-box-img');
+		
+			// Reset all icons 
+			gsap.to(icons, {
+				autoAlpha: 0,
+				duration: 1,
+				stagger: 0.05,
+				ease: "power1.inOut"
+			});
+		
+			let randomIcons = icons.sort(() => 0.5 - Math.random()).slice(0, 11);
+			gsap.to(randomIcons, {
+				autoAlpha: 1,
+				duration: 1,
+				stagger: 0.05,
+				ease: "power1.inOut",
+				delay: 0.5 
+			});
+			setTimeout(animateTechnologiesIcons, 3000);
+		}
+		
+		// Start the animation
+		animateTechnologiesIcons();
+		
+	
+		// testing
 
 
 		// Lenis
